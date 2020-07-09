@@ -1,0 +1,69 @@
+﻿<Window x:Class="FSTEC_Analytics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ФСТЭК Аналитик" Height="350" Width="570" MinHeight="350" MaxHeight="440" MaxWidth="650" MinWidth="570"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize">
+    
+    <Grid x:Name="Window">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="DragDropZone" Grid.Row="1" Grid.ColumnSpan="3" MouseDown="GridFieldDrop_MouseDown" Margin="100 5 100 5"
+              AllowDrop="True" DragEnter="GridFieldDrop_DragEnter" DragDrop.Drop="GridFieldDrop_Drop"
+              DragLeave="GridFieldDrop_DragLeave">
+            <Rectangle Fill="#FFFAFA" Stroke="Black" StrokeThickness="0.5" StrokeDashArray="15" RadiusX="5" RadiusY="5"></Rectangle>
+            <TextBlock x:Name="DragText" Text="Сюда можно бросить файл!" FontWeight="ExtraLight" FontSize="14" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10">
+                <TextBlock Text="От" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" Margin="0 0 0 2"/>
+                <DatePicker x:Name="DateFrom" VerticalAlignment="Center" SelectedDateFormat="Short" Height="23" BorderThickness="0" FontSize="12" Foreground="Black" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Bottom">
+                <TextBlock Text="До" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" Margin="0 0 0 2"/>
+                <DatePicker x:Name="DateTo" VerticalAlignment="Center" SelectedDateFormat="Short" Height="23" BorderThickness="0" FontSize="12" Foreground="Black" />
+            </StackPanel>
+
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="3" Margin="110 10 110 0" VerticalAlignment="Top">
+            <Button x:Name="Button" BorderThickness="1" Content="Анализировать" FontSize="12" FontWeight="ExtraLight" Cursor="Hand" Click="Button_Click" Width="240" Height="30" HorizontalAlignment="Center"/>
+            <Button x:Name="Button_K" Width="35" Height="30" BorderThickness="1" Content="К" FontWeight="ExtraLight" Cursor="Hand" Margin="5 0 0 0" Click="Button_K_Click" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="18000">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <TextBlock FontSize="11" Text='"К" - КРАТКИЙ&#10;Отчёт в файл будет сформирован в одной директории с программой'/>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="Button_P" Width="35" Height="30" IsEnabled="False" BorderThickness="1" Content="П" FontWeight="ExtraLight" Cursor="Hand" Margin="3 0 0 0" Click="Button_P_Click" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="18000">
+                <Button.ToolTip>
+                    <ToolTip >
+                        <TextBlock FontSize="11" Text='"П" - ПОЛНЫЙ&#10;Отчёт в файл будет сформирован в одной директории с программой'/>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+        </StackPanel>
+        
+        <TextBlock Height="20" Text="Скачать файл напрямую" Cursor="Hand" MouseDown="TextBlock_MouseDown" Foreground="Blue" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top"  Margin="0 43 69 0"/>
+    </Grid>
+</Window>
